@@ -101,3 +101,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
   
+  document.addEventListener('DOMContentLoaded', function() {
+    const burgerMenu = document.querySelector('.burger-menu');
+    const navLinks = document.querySelector('.nav-links');
+  
+    if (burgerMenu) { // Check if burger menu exists
+      burgerMenu.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+  
+      // Close menu when clicking a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          burgerMenu.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
+    }
+  });
+  
