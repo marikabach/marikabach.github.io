@@ -101,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
   
+  //BURGER 
   document.addEventListener('DOMContentLoaded', function() {
     const burgerMenu = document.querySelector('.burger-menu');
     const navLinks = document.querySelector('.nav-links');
@@ -121,3 +122,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   
+// Auto-adjust timeline card heights
+function adjustTimelineCards() {
+  document.querySelectorAll('.timeline-card').forEach(card => {
+    const imgHeight = card.querySelector('img')?.offsetHeight || 0;
+    const textHeight = card.querySelector('div').offsetHeight;
+    card.style.minHeight = `${Math.max(imgHeight, textHeight) + 30}px`;
+  });
+}
+
+// Run on load and resize
+window.addEventListener('load', adjustTimelineCards);
+window.addEventListener('resize', adjustTimelineCards);

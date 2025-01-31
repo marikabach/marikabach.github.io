@@ -56,7 +56,7 @@
   }
   
   .has-background {
-    background: url('../images/Backgrounds/blatt\ blurr.png') no-repeat center center;
+    background: url('../images/Backgrounds/blattblurr.png') no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
     min-height: 120vh;
@@ -65,7 +65,7 @@
   /* HOME */
   .hero {
     height: 90vh;
-    background: url('../images/Backgrounds/blatt\ sharp.jpg') center / cover no-repeat;
+    background: url('../images/Backgrounds/blattsharp.jpg') center / cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -741,7 +741,7 @@ body {
   padding: 2rem;
   font-size: 1rem;
   line-height: 1.6;
-  color: #c15211;
+  color: #333;
 }
 
 .imprint-section h1,
@@ -767,7 +767,7 @@ body {
   padding: 2rem;
   font-size: 1rem;
   line-height: 1.6;
-  color: #c15211;
+  color: #333;
 }
 
 .privacy-section h1,
@@ -814,214 +814,34 @@ body {
   
 /* ==========  MEDIA QUERIES ========== */
 
-/* Small phones (320px - 480px) */
-@media screen and (min-width: 320px) and (max-width: 480px) {
-  /* Navigation */
-  .navbar {
-    padding: 0.5rem;
-    flex-direction: column;
-    gap: 1rem;
-  }
 
-  .nav-links {
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
 
-  /* Portfolio Grid */
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .portfolio-item {
-    height: 300px;
-  }
-
-  /* Timeline */
-  .timeline::before {
-    left: 20px;
-  }
-
-  .timeline-item {
-    width: 100%;
-    padding: 2rem 0;
-  }
-
-  .timeline-item.left,
-  .timeline-item.right {
-    margin-left: 0;
-    justify-content: flex-start;
-    text-align: left;
-  }
-
-  .timeline-card {
-    width: calc(100% - 50px);
-    margin-left: 40px;
-    min-height: auto;
-  }
-
-  .milestone {
-    padding-left: 40px;
-  }
-
-  .milestone-dot {
-    left: 12px;
-  }
+/* ========== MOBILE FIRST (Default) < 768px ========== */
+@media (min-width:320px) and ( max-width: 768px) {
+/* Navigation */
+.navbar {
+  padding: 1rem;
+  position: relative;
+  flex-wrap: wrap;
 }
 
-/* Tablets (481px - 768px) */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  /* Portfolio Grid */
-  .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  .portfolio-item {
-    height: 350px;
-  }
-
-  /* Timeline */
-  .timeline-card {
-    width: 300px;
-  }
-
-  .milestone {
-    flex-direction: column !important;
-    gap: 1rem;
-  }
-
-  .text-column,
-  .image-column {
-    width: 100%;
-  }
+.brand-logo img {
+  height: 35px;
 }
 
-/* Laptops/Small Desktops (769px - 1024px) */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  /* Portfolio Grid */
-  .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-
-  /* Timeline */
-  .timeline-card {
-    width: 350px;
-  }
-}
-
-/* Large Desktops (1025px - 1440px) */
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
-  /* Portfolio Grid */
-  .portfolio-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-}
-
-/* 4K/Ultra HD (1441px - 2560px) */
-@media screen and (min-width: 1441px) and (max-width: 2560px) {
-  /* Container width */
-  .portfolio-section,
-  .timeline {
-    max-width: 1800px;
-    margin: 0 auto;
-  }
-
-  /* Portfolio Grid */
-  .portfolio-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
-
-  /* Timeline */
-  .timeline-card {
-    width: 500px;
-  }
-
-  /* Typography scale-up */
-  .hero-content h1 {
-    font-size: 4rem;
-  }
-
-  .hero-content p {
-    font-size: 1.5rem;
-  }
-}
-
-/* Shared responsive styles */
-@media screen and (max-width: 768px) {
-  .navbar {
-    position: relative;
-    padding: 1rem;
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    height: 50vh;
-    background-color: #fffffffa;
-    padding-top: 60px;
-    flex-direction: column;
-    align-items: center;
-    transition: right 0.3s ease;
-    z-index: 999;
-  }
-
-  .nav-links.active {
-    right: 0;
-  }
-
-  .nav-links li a {
-    font-size: 1rem;
-    padding: 1rem;
-    display: block;
-  }
-
-  /* Adjust brand logo for mobile */
-  .brand-logo {
-    margin-bottom: 1rem;
-  }
-
-  .brand-logo img {
-    height: 30px; /* Slightly smaller on mobile */
-  }
-
-  /* Keep other mobile styles */
-  .hero,
-  .hero-bmw {
-    height: 70vh;
-  }
-
-  .hero-content h1,
-  .hero-bmw-content h1 {
-    font-size: 2rem;
-  }
-
-  footer {
-    padding: 1rem;
-  }
-
-  .footer-nav {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-}
-
-
-/* Burger Menu Icon */
+/* Burger Menu */
+/* ===== Burger Menu & Mobile Navigation ===== */
+/* Mobile First Styles (applies to screens < 768px) */
 .burger-menu {
-  display: none;
+  display: block;
   cursor: pointer;
   padding: 0.5rem;
   z-index: 1001;
   background: none;
   border: none;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
 }
 
 .burger-menu span {
@@ -1033,76 +853,123 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Mobile Navigation */
-@media screen and (max-width: 768px) {
+/* Mobile Navigation Panel */
+.nav-links {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  height: 100vh;
+  background-color: #fffffffa;
+  padding-top: 80px;
+  flex-direction: column;
+  align-items: center;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.nav-links.active {
+  right: 0;
+}
+
+/* Burger Menu Animation */
+.burger-menu.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-menu.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Tablet/Desktop Hide Burger (applies to screens ≥ 768px) */
+@media (min-width: 768px) {
   .burger-menu {
-    display: block;
+    display: none;
   }
-
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%; /* Start off-screen */
-    width: 100%;
-    height: 100vh;
-    background-color: #fffffffa;
-    padding-top: 60px; /* Space for navbar */
-    flex-direction: column;
-    align-items: center;
-    transition: right 0.3s ease;
-    z-index: 999;
-  }
-
-  .nav-links.active {
-    right: 0; /* Slide in from right */
-  }
-
-  .nav-links li {
-    width: 100%;
-    text-align: center;
-    margin: 1rem 0;
-  }
-
-  .nav-links li a {
-    display: block;
-    padding: 1rem;
-    font-size: 1.1rem;
-  }
-
-  /* Animated burger menu */
-  .burger-menu.active span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-
-  .burger-menu.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .burger-menu.active span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-  }
-
-  /* Adjust main content to account for fixed navbar */
-  main {
-    padding-top: 60px;
-  }
-}
-
-/* Desktop Navigation */
-@media screen and (min-width: 769px) {
-  .nav-links {
-    display: flex;
-    gap: 1.5rem;
-  }
-
-  .nav-links li a {
-    font-size: 0.9rem;
-    padding: 0.3rem 0.5rem;
-  }
-
-  /* Adjust main content to account for fixed navbar */
-  main {
-    padding-top: 60px;
-  }
-}
   
+  .nav-links {
+    position: static;
+    height: auto;
+    flex-direction: row;
+    background: transparent;
+    padding: 0;
+    width: auto;
+  }
+}
+
+/* Hero Sections */
+.hero, 
+.hero-bmw {
+  height: 70vh;
+  background-attachment: scroll !important;
+}
+
+.hero-content h1 {
+  font-size: 2rem;
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+  grid-template-columns: 1fr;
+}
+
+.portfolio-item {
+  height: 300px;
+}
+
+}
+
+/* ===== Mobile Timeline Stack ===== */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 15px !important; /* Line closer to edge */
+  }
+
+  .timeline-item {
+    width: 100% !important;
+    padding-left: 35px !important;
+    margin: 2rem 0 !important;
+    flex-direction: column !important;
+  }
+
+  .milestone-dot {
+    left: 4px !important;
+    top: 25px !important;
+  }
+
+  .timeline-card {
+    width: 100% !important;
+    margin: 0 !important;
+    transform: none !important;
+    order: 2 !important; /* Card always below dot */
+  }
+
+  .text-column, 
+  .image-column {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    padding: 0 !important;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Remove alternating layout */
+  .milestone.reverse {
+    flex-direction: column !important;
+  }
+
+  /* Image spacing */
+  .image-column img {
+    margin-top: 1rem;
+  }
+
+  /* Vertical dot alignment */
+  .milestone-dot {
+    top: 35px !important;
+    transform: none !important;
+  }
+}
