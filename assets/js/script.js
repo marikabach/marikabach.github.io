@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Show the next image
         images[currentIndex].classList.add('active');
-      }, 3000);
+      }, 2000);
     });
   });
   
@@ -134,3 +134,60 @@ function adjustTimelineCards() {
 // Run on load and resize
 window.addEventListener('load', adjustTimelineCards);
 window.addEventListener('resize', adjustTimelineCards);
+
+
+
+// Wir suchen nach dem 'carousel-outer', das alle Elemente enthält
+document.querySelectorAll('.carousel-outer').forEach(container => {
+  const wrapper = container.querySelector('.carousel-wrapper');
+  const btnPrev = container.querySelector('.prev');
+  const btnNext = container.querySelector('.next');
+  let currentIndex = 0;
+
+  // Anzahl der Bilder ermitteln
+  const images = Array.from(wrapper.querySelectorAll('img'));
+  
+  // Bilder klonen für Endlos-Effekt
+  images.forEach(img => {
+    wrapper.appendChild(img.cloneNode(true));
+  });
+
+  function updateCarousel() {
+    // Breite eines Bildes inkl. Margin (Gap)
+    const itemWidth = wrapper.querySelector('img').clientWidth + 16; 
+    wrapper.style.transition = 'transform 0.5s ease';
+    wrapper.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+  }
+
+  btnNext.addEventListener('click', () => {
+    currentIndex++;
+    updateCarousel();
+    
+    // Wenn Ende der ersten Bildgruppe erreicht: Sprung zurück
+    if (currentIndex >= images.length) {
+      setTimeout(() => {
+        wrapper.style.transition = 'none';
+        currentIndex = 0;
+        wrapper.style.transform = `translateX(0px)`;
+      }, 500);
+    }
+  });
+
+  btnPrev.addEventListener('click', () => {
+    if (currentIndex <= 0) {
+      // Sprung zum Ende der Bildgruppe
+      wrapper.style.transition = 'none';
+      currentIndex = images.length;
+      const itemWidth = wrapper.querySelector('img').clientWidth + 16;
+      wrapper.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+      
+      setTimeout(() => {
+        currentIndex--;
+        updateCarousel();
+      }, 50);
+    } else {
+      currentIndex--;
+      updateCarousel();
+    }
+  });
+});

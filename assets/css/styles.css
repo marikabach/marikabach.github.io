@@ -109,7 +109,7 @@
     margin-top: 2rem;
   }
   
-  .portfolio-item {   /* Grid and framework*/
+  .portfolio-item {   
     width: 100%;
     height: 500px;
     position: relative;
@@ -220,10 +220,202 @@ body {
   background: #ccc;
 }
 
+
+
+/* 1. Standard-Layout für Desktop (Text links, Bild rechts) */
+.milestone {
+  position: relative;
+  margin: 4rem 0;
+  padding-left: 80px; /* Platz für die Linie und den Punkt */
+  display: flex;
+  flex-direction: row; /* Elemente nebeneinander */
+  align-items: center; /* Vertikal zentrieren */
+  gap: 2rem;
+}
+
+/* 2. Umkehrung für Desktop (Bild links, Text rechts) */
+.milestone.reverse {
+  flex-direction: row-reverse; 
+}
+
+/* 3. Aussehen des Punktes auf der Zeitachse */
+.milestone-dot {
+  position: absolute;
+  top: 45%; 
+  left: 41px;
+  width: 16px;
+  height: 16px;
+  background: #e86f28; /* Markenfarbe */
+  border-radius: 30%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #e86f2890;
+}
+
+/* 4. Spalten-Eigenschaften */
+.text-column,
+.image-column {
+  flex: 1; /* Beide Spalten nehmen gleich viel Platz ein */
+  min-width: 300px; /* Verhindert, dass die Spalten zu klein gequetscht werden */
+}
+
+.text-column h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.text-column p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.image-column img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: block;
+}
+
+
+/*  FINAL OUTCOME  */
+.outcome {
+  text-align: center;
+  padding: 2rem;
+}
+
+.outcome h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.outcome p {
+  max-width: 700px;
+  margin: 0.5rem auto 2rem auto;
+  line-height: 1.6;
+}
+
+.outcome img {
+  width: 60%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* --- Konzept Sektion (Angepasst an Timeline Proportionen) --- */
+.outcome.outcome-adhs {
+  display: flex;
+  align-items: center;
+  gap: 2rem;             /* Gleicher Abstand zwischen Bild und Text wie in der Timeline */
+  
+  /* Übernimmt die Breite deines .timeline-bmw Containers */
+  width: 90%;            
+  max-width: 1200px;     
+  margin: 3rem auto;     /* Zentriert die Sektion auf der Seite */
+  
+  flex-direction: row-reverse;
+  padding: 0 2rem; 
+  text-align: left;
+}
+
+/* Zwingt das Bild in der neuen Sektion, 100% der Spalte auszufüllen (wie in der Timeline) */
+.outcome.outcome-adhs .image-column img {
+  width: 100%;
+  max-width: 100%;
+  /* Stellt sicher, dass auch die Ecken und der Schatten exakt gleich aussehen */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.video {
+  position: fixed;  /* or absolute, if you prefer */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;  /* hide any overflow if the video is larger than the window */
+  z-index: -1;       /* place it behind other elements */
+}
+
+.video-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);/* crop/zoom so it fills the container without black bars */
+}
+
+.content {
+  position: relative;
+  z-index: 1; /* above the video */
+  /* additional styling for your text/content */
+}
+
+
+
+
+/*  HERO SECTION  */
+.hero-bmw {
+  position: relative;
+  width: 100%;
+  height: 60vh; /* Adjust as desired */
+  /* Replace this with the actual hero image for your project */
+  background: url('assets/images/jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-bmw-overlay {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(0,0,0,0.4); /* dark overlay for text contrast */
+}
+
+.hero-bmw-content {
+  position: relative; /* above the overlay */
+  color: #fff;
+  max-width: 800px;
+  padding: 1rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7); /* optional for legibility */
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/*  TIMELINE CONTAINER  */
+.timeline {
+  width: 90%;
+  max-width: 1200px;
+  margin: 3rem auto;
+  position: relative;
+}
+
+/* Left-side vertical line (timeline style). 
+centered, place it at left: 50%; transform: translateX(-50%). */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50px; 
+  width: 2px;
+  background: #ccc;
+}
+
 /* Each milestone is a row with a dot on the left & two columns for text/images */
 .milestone {
   position: relative;
-  margin: 2rem 0;
+  margin: 4rem 0;
   padding-left: 80px; /* space for line & dot */
   display: flex;
   flex-wrap: wrap; /* columns stack on small screens */
@@ -233,8 +425,8 @@ body {
 
 .milestone-dot {
   position: absolute;
-  top: 2rem; /* vertical offset within the milestone */
-  left: 41px; 
+  top: 45%; /* vertical offset within the milestone */
+  left: 43px; 
   width: 16px;
   height: 16px;
   background: #e86f28; /* brand color */
@@ -243,11 +435,13 @@ body {
   box-shadow: 0 0 0 2px #e86f2890;
 }
 
+
 .text-column,
 .image-column {
   flex: 1; 
   min-width: 300px;
 }
+
 
 /* Reverse class flips the order of columns to alternate text/image layout */
 .milestone.reverse {
@@ -293,168 +487,95 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-.video {
-  position: fixed;  /* or absolute, if you prefer */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;  /* hide any overflow if the video is larger than the window */
-  z-index: -1;       /* place it behind other elements */
-}
 
-.video-background video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);/* crop/zoom so it fills the container without black bars */
-}
+/* =========================================
+   KARUSSELL SEKTION (Text oben, Karussell unten)
+   ========================================= */
 
-.content {
-  position: relative;
-  z-index: 1; /* above the video */
-  /* additional styling for your text/content */
-}
-
-
-
-
-/* ====== HERO SECTION ====== */
-.hero-bmw {
-  position: relative;
-  width: 100%;
-  height: 60vh; /* Adjust as desired */
-  /* Replace this with the actual hero image for your project */
-  background: url('assets/images/jpg') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.hero-bmw-overlay {
-  position: absolute;
-  top: 0; 
-  left: 0;
-  width: 100%; 
-  height: 100%;
-  background: rgba(0,0,0,0.4); /* dark overlay for text contrast */
-}
-
-.hero-bmw-content {
-  position: relative; /* above the overlay */
-  color: #fff;
-  max-width: 800px;
-  padding: 1rem;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.7); /* optional for legibility */
-}
-
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.hero-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-/* ====== TIMELINE CONTAINER ====== */
-.timeline {
-  width: 90%;
-  max-width: 1200px;
-  margin: 3rem auto;
-  position: relative;
-}
-
-/* Left-side vertical line (timeline style). 
-   If you want it centered, place it at left: 50%; transform: translateX(-50%). */
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50px; 
-  width: 2px;
-  background: #ccc;
-}
-
-/* Each milestone is a row with a dot on the left & two columns for text/images */
-.milestone {
-  position: relative;
-  margin: 2rem 0;
-  padding-left: 80px; /* space for line & dot */
-  display: flex;
-  flex-wrap: wrap; /* columns stack on small screens */
-  align-items: center;
-  gap: 2rem;
-}
-
-.milestone-dot {
-  position: absolute;
-  top: 45%; /* vertical offset within the milestone */
-  left: 43px; 
-  width: 16px;
-  height: 16px;
-  background: #e86f28; /* brand color */
-  border-radius: 30%;
-  border: 2px solid #fff;
-  box-shadow: 0 0 0 2px #e86f2890;
-}
-
-
-.text-column,
-.image-column {
-  flex: 1; 
-  min-width: 300px;
-}
-
-/* Reverse class flips the order of columns to alternate text/image layout */
-.milestone.reverse {
-  flex-direction: row-reverse;
-}
-
-.text-column h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.text-column p {
-  margin-bottom: 1rem;
-  line-height: 1.5;
-}
-
-.image-column img {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-
-/* ====== FINAL OUTCOME ====== */
-.outcome {
-  text-align: center;
-  padding: 2rem;
-}
-
-.outcome h2 {
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
-}
-
-.outcome p {
-  max-width: 700px;
-  margin: 0.5rem auto 2rem auto;
-  line-height: 1.6;
-}
-
-.outcome img {
-  width: 60%;
-  max-width: 600px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-
+   .carousel-section {
+    display: flex;
+    flex-direction: column; /* Zwingt Text und Karussell UNTEREINANDER */
+    align-items: flex-start; /* Linksbündig ausrichten */
+    gap: 3rem; /* Schöner Abstand zwischen Text und Karussell */
+    width: 90%;
+    max-width: 1200px;
+    margin: 4rem auto; /* Zentriert die Sektion auf der Seite */
+  }
+  
+  .carousel-text {
+    width: 100%;
+    max-width: 800px; /* Begrenzt die Textbreite für bessere Lesbarkeit */
+  }
+  
+  .carousel-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .carousel-text p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+  
+  /* =========================================
+     DEIN KARUSSELL CODE (Aufgeräumt)
+     ========================================= */
+  
+  .carousel-outer {
+    position: relative;
+    width: 100%;
+  }
+  
+  .carousel-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Maske für den weichen Übergang an den Rändern */
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+  
+  .carousel-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 1.5rem; /* Etwas mehr Abstand zwischen den Bildern */
+    width: 100%;
+    transition: transform 0.5s ease;
+  }
+  
+  .carousel-wrapper img {
+    flex: 0 0 30%;       
+    max-width: 30%;      
+    height: 350px; /* Höhe etwas angepasst, damit die Mockups besser wirken */
+    object-fit: cover;   
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    display: block;
+  }
+  
+  .carousel-btn {
+    background: none;       
+    border: none;
+    color: #000;            
+    font-size: 3rem; /* Pfeile etwas größer gemacht */
+    cursor: pointer;
+    position: absolute;
+    z-index: 20;            
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 10px;
+    transition: opacity 0.3s ease;
+  }
+  
+  .carousel-btn:hover {
+    opacity: 0.5;           
+  }
+  
+  /* Pfeile weiter nach außen setzen, damit sie nicht über den Bildern liegen */
+  .prev { left: -40px; }     
+  .next { right: -40px; }
 
 /*Body Timeline*/
 
@@ -465,7 +586,7 @@ body {
   
 }
 
-/* ========== Timeline Container ========== */
+
 .timeline {
   position: relative;
   width: 80%;
@@ -487,7 +608,7 @@ body {
   z-index: 1;
 }
 
-/* ========== Timeline Items ========== */
+/* ==== Timeline Items ==== */
 .timeline-item {
   position: relative;
   width: 50%;
@@ -499,7 +620,7 @@ body {
 
 
 
-/* The marker (dot) sits near the center line */
+/* The marker (dot) on center line */
 .timeline-marker {
   position: relative;
   z-index: 2; /* above the timeline line */
@@ -555,11 +676,11 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* ========== Left vs. Right items ========== */
+/* ==== Left vs. Right items ==== */
 .timeline-item.left {
   justify-content: flex-end; /* Card is on the LEFT side of the timeline line */
   text-align: right;
-  /* The card is anchored to the left half of the container */
+  
 }
 
 .timeline-item.right {
@@ -570,7 +691,7 @@ body {
 }
 
 
-/* By default, .timeline::before is at 50% from the left edge,
+/* .timeline::before is at 50% from the left edge,
    so the line splits the container in half.  The .left items
    occupy the left 50%, .right items the right 50%. */
 
@@ -607,17 +728,23 @@ body {
   margin: 0 auto;
 }
 
-/* Close button (X in top-right) 
-.lightbox-close {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  color: #fff;
-  font-size: 2rem;
-  font-weight: bold;
-  cursor: pointer;
+/* Zwingt DIESEN einen Milestone, die Elemente untereinander statt nebeneinander zu zeigen */
+.milestone.milestone-stacked {
+  flex-direction: column !important;
+  align-items: flex-start; 
 }
-*/
+
+/* Positioniert den orangenen Punkt auf Höhe der H2-Überschrift */
+.milestone.milestone-stacked .milestone-dot {
+  top: 25px !important; 
+}
+
+/* Gibt dem Text die volle Breite, damit er nicht eingequetscht aussieht */
+.milestone.milestone-stacked .text-column {
+  width: 100%;
+  max-width: 800px; /* Begrenzt die Lesebreite ein wenig für bessere Optik */
+  margin-bottom: 2rem; /* Schöner Abstand zum Karussell darunter */
+}
 
 /*FIXED X IN THE RIGHT CORNER*/
 .lightbox-close {
@@ -648,7 +775,7 @@ body {
 .lightbox-prev { left: 0; }
 .lightbox-next { right: 0; }
 
-/* Show overlay when we add an 'active' class with JS */
+
 .lightbox-overlay.active {
   display: flex;  /* flex center the content */
 }
@@ -676,6 +803,72 @@ body {
     opacity: 1;
     position: relative; /* so the container's height adjusts to this image */
   }
+
+  /* Container sorgt für den Rahmen und den Fade-Effekt */
+.carousel-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  /* Fade-Effekt */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* WICHTIG: Das Flex-Display zwingt die Bilder in eine Reihe */
+.carousel-wrapper {
+  display: flex !important; /* !important überschreibt evtl. störende Regeln */
+  flex-direction: row !important;
+  gap: 1rem;
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+
+/* Die Bilder zwingen wir in eine feste Größe */
+.carousel-wrapper img {
+  flex: 0 0 30%;       /* 30% Breite, damit immer ca. 3 Bilder zu sehen sind */
+  max-width: 30%;      /* Verhindert, dass sie riesig werden */
+  height: 250px;       /* Feste Höhe */
+  object-fit: cover;   /* Schneidet sie passend zu */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: block;
+}
+
+.carousel-btn {
+  background: none;       /* Kein Hintergrund mehr */
+  border: none;
+  color: #000;            /* Schwarze Pfeile */
+  font-size: 2rem;        /* Größe der Pfeile */
+  cursor: pointer;
+  position: absolute;
+  z-index: 20;            /* Muss höher sein als der Fade-Effekt */
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 10px;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-btn:hover {
+  opacity: 0.5;           /* Leichter Hover-Effekt */
+}
+
+.prev { left: -5px; }     /* Etwas außerhalb des Fades platzieren */
+.next { right: -5px; }
+
+.carousel-outer {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-container {
+  /* Die Maske bleibt hier, aber die Buttons sind jetzt draußen und bleiben scharf! */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  overflow: hidden;
+}
+
   
   /*BUTTON FROM ABOUT TO CONTACT*/
   .btn-primary {
@@ -817,6 +1010,7 @@ body {
 
 
 /* ========== MOBILE FIRST (Default) < 768px ========== */
+
 @media (min-width:320px) and ( max-width: 768px) {
 /* Navigation */
 .navbar {
@@ -830,7 +1024,7 @@ body {
 }
 
 /* Burger Menu */
-/* ===== Burger Menu & Mobile Navigation ===== */
+
 /* Mobile First Styles (applies to screens < 768px) */
 .burger-menu {
   display: block;
@@ -922,54 +1116,50 @@ body {
 }
 
 }
-
-/* ===== Mobile Timeline Stack ===== */
-@media (max-width: 768px) {
-  .timeline::before {
-    left: 15px !important; /* Line closer to edge */
+/* =========================================
+   MOBILE TIMELINE STACK (Aufgeräumt & Korrigiert)
+   ========================================= */
+   @media (max-width: 768px) {
+  
+    /* 1. Die Linie weiter nach links an den Rand schieben */
+    .timeline-bmw::before {
+      left: 20px !important; 
+    }
+  
+    /* 2. Den gesamten Container anpassen */
+    .milestone,
+    .milestone.reverse {
+      flex-direction: column !important; /* Alles untereinander */
+      align-items: flex-start !important;
+      padding-left: 50px !important; /* Weniger Abstand links, da die Linie jetzt bei 20px ist */
+      margin: 3rem 0 !important;
+    }
+   
+    /* 3. Den Punkt exakt auf die Linie und auf Höhe der H2 setzen */
+    .milestone-dot {
+      left: 13px !important; 
+      top: 5px !important; 
+      transform: none !important;
+    }
+  
+    /* Spezielle Anpassung für deinen Karussell-Milestone auf dem Handy */
+    .milestone.milestone-stacked .milestone-dot {
+      top: 5px !important; 
+    }
+  
+    /* 4. Spalten auf volle Breite ziehen */
+    .text-column, 
+    .image-column {
+      width: 100% !important;
+      max-width: 100% !important;
+      min-width: unset !important; /* Hebt die Desktop-Einschränkung auf */
+      padding: 0 !important;
+      margin-bottom: 1.5rem;
+    }
+  
+    /* 5. Abstand zwischen Bild und dem nächsten Text */
+    .image-column img {
+      margin-top: 1rem;
+    }
   }
 
-  .timeline-item {
-    width: 100% !important;
-    padding-left: 35px !important;
-    margin: 2rem 0 !important;
-    flex-direction: column !important;
-  }
-
-  .milestone-dot {
-    left: 4px !important;
-    top: 25px !important;
-  }
-
-  .timeline-card {
-    width: 100% !important;
-    margin: 0 !important;
-    transform: none !important;
-    order: 2 !important; /* Card always below dot */
-  }
-
-  .text-column, 
-  .image-column {
-    width: 100% !important;
-    max-width: 100% !important;
-    flex: none !important;
-    padding: 0 !important;
-    margin-bottom: 1.5rem;
-  }
-
-  /* Remove alternating layout */
-  .milestone.reverse {
-    flex-direction: column !important;
-  }
-
-  /* Image spacing */
-  .image-column img {
-    margin-top: 1rem;
-  }
-
-  /* Vertical dot alignment */
-  .milestone-dot {
-    top: 35px !important;
-    transform: none !important;
-  }
-}
